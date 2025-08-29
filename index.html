@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2630042通信塔</title>
+  <meta name="theme-color" content="#3344cc">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="app-192.png">
+</head>
+<body>
+  <h1>🛰 2630042通信塔</h1>
+  <p>調べたいキーワードを入力してください。</p>
+  <input id="keyword" type="text" placeholder="例：AI、科学、姫森ルーナ…">
+  <div>
+    <button onclick="search('google')">Googleニュース</button>
+    <button onclick="search('bing')">Bingニュース</button>
+    <button onclick="search('yahoo')">Yahoo!ニュース</button>
+    <button onclick="search('twitter')">Twitter検索</button>
+    <button onclick="search('youtube')">YouTube検索</button>
+  </div>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(console.error);
+      });
+    }
+
+    function search(site) {
+      const kw = document.getElementById("keyword").value.trim();
+      if (!kw) return alert("キーワードを入力してください");
+      const encoded = encodeURIComponent(kw);
+      let url = "";
+      switch (site) {
+        case 'google': url = `https://news.google.com/search?q=${encoded}`; break;
+        case 'bing':   url = `https://www.bing.com/news/search?q=${encoded}`; break;
+        case 'yahoo':  url = `https://search.yahoo.co.jp/news/search?p=${encoded}`; break;
+        case 'twitter':url = `https://twitter.com/search?q=${encoded}&src=typed_query&f=live`; break;
+        case 'youtube':url = `https://www.youtube.com/results?search_query=${encoded}`; break;
+      }
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>

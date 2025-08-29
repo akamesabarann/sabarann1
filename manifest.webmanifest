@@ -1,0 +1,20 @@
+{
+  "name": "2630042通信塔",
+  "short_name": "通信塔",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#fdfdfc",
+  "theme_color": "#3344cc",
+  "icons": [
+    {
+      "src": "app-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "app-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
